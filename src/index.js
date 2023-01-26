@@ -1,51 +1,74 @@
 /**
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
+ * Todo
+ * @typedef {Object} Todo
+ * @property {string} id - 할 일의 아이디
+ * @property {string} text - 할 일의 내용
+ * @property {boolean} completed - 할 일의 완료여부
+ * @property {string} category - 할 일의 카테고리
+ * @property {string[]} [tag] - 할 일의 태그들
  */
-function Book(title, author) {}
 
 /**
- * Both of these will link to the bar function.
- * @see {@link bar}
- * @see bar
+ * 할 일을 추가한다.
+ * 내용없이 추가할 수 없다.
+ * @param {Object} newTodo
+ * @param {string} newTodo.text - 할 일의 내용
+ * @param {string} newTodo.category - 할 일의 카테고리
+ * @param {string[]} [newTodo.tag] - 할 일의 태그들
  */
-function foo() {}
-
-// Use the inline {@link} tag to include a link within a free-form description.
-/**
- * @see {@link foo} for further information.
- * @see {@link http://github.com|GitHub}
- */
-function bar() {}
+function createTodo({ text, category, tag }) {}
 
 /**
- * Generic dairy product.
- * @constructor
+ * 모든 할 일을 조회한다.
+ * @return {Todo[]} 모든 할 일
  */
-function DairyProduct() {}
+function getTodo() {}
 
 /**
- * Check whether the dairy product is solid at room temperature.
- * @abstract
- * @return {boolean}
+ * ID를 기반으로 특정 할 일을 조회한다.
+ * @param {string} id - 조회할 할 일의 ID
+ * @return {Todo} 주어진 ID를 가진 할 일
  */
-DairyProduct.prototype.isSolid = function () {
-	throw new Error('must be implemented by subclass!');
-};
+function getTodoById(id) {}
 
 /**
- * Cool, refreshing milk.
- * @constructor
- * @augments DairyProduct
+ * ID를 제외한 할 일의 모든 속성을 수정한다.
+ * @param {Todo} todo
+ * @param {Object} data - 수정할 속성들
+ * @param {string} data.text
+ * @param {string} data.category
+ * @param {string} data.tag
  */
-function Milk() {}
+function updateTodo(todo, { text, category, tag }) {}
 
 /**
- * Check whether milk is solid at room temperature.
- * @return {boolean} Always returns false.
+ * 특정 할 일의 특정 태그를 수정한다.
+ * @param {Todo} todo
+ * @param {string} oldTag
+ * @param {string} newTag
  */
-Milk.prototype.isSolid = function () {
-	return false;
-};
+function updateTag(todo, oldTag, newTag) {}
+
+/**
+ * ID를 기반으로 특정 할 일을 삭제한다.
+ * @param {string} id - 삭제할 할 일의 ID
+ */
+function deleteTodo(id) {}
+
+/**
+ * 모든 할 일을 제거한다.
+ */
+function clearTodo() {}
+
+/**
+ * 특정 할 일에서 특정 태그를 삭제한다.
+ * @param {Todo} todo - 태그를 삭제할 할 일
+ * @param {string} tag - 삭제할 태그
+ */
+function deleteTag(todo, tag) {}
+
+/**
+ * 특정 할 일의 모든 태그를 제거한다.
+ * @param {Todo} todo - 모든 태그를 제거할 할 일
+ */
+function clearTag(todo) {}
